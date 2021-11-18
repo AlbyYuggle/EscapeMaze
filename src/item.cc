@@ -9,7 +9,7 @@ void Item::SetRandomAttributes() { //add energy to the user
     coord_x_ = -0.7f + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX/(1.4f)));
     coord_y_ = -0.7f + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX/(1.4f)));
 
-    if (item_name_ == "Monster") {  ///Monster Drink
+    if (item_name_ == "Monster") {  ///Monster Drink goes here
         speed_multiplier_ = 2.5f;
         size_x_ = 0.025f;
         size_y_ = 0.025f;
