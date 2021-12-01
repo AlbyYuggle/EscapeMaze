@@ -326,6 +326,6 @@ bool Maze::CheckWallOverlap(float y, float x) {
     int cell_x = floor(x/b_height);
     float my = std::fmod(y,b_height);
     int cell_y = floor(y/b_height);
-    // to do 
-    return false;
+    // to do
+    return true;
 }
