@@ -204,6 +204,7 @@ void Game::ProcessInputAndRegenerate(Level &level, Maze &maze){
             name_to_size_data_["walls"] = maze.GetSizeData();
             BindElement("walls");
         }
+        // to do
         float * fetched_player_hitbox = player_->GetHitbox();
         float player_hitbox[12];
         for(int i = 0; i < 12; i++){

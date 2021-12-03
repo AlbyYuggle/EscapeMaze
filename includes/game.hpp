@@ -51,6 +51,8 @@ class Game {
         void BindElement(string object_name);
         void Play(Level &level, Maze &maze);
         void ProcessInputAndRegenerate(Level &level, Maze &maze);
+        //todo
+        void Moveitem(Maze &maze);
     public:
         void Init();
         void GenerateNextLevel();
