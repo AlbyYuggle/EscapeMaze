@@ -52,17 +52,24 @@ const char *kFragmentShaderSourceAi = "#version 330 core\n"
     "   FragColor = vec4(1.0f, 0.05f, 0.05f, 1.0f);\n" 
     "}\n\0";
 
+const char *kFragmentShaderSourceTimer = "#version 330 core\n"
+    "out vec4 FragColor;\n"
+    "void main()\n"
+    "{\n"
+    "   FragColor = vec4(1.0f, 1.0f, 0.2f, 1.0f);\n" 
+    "}\n\0";
 
-const vector<const char*> kFragmentSources = {kFragmentShaderSourceWalls, kFragmentShaderSourceTarget, kFragmentShaderSourcePlayer, kFragmentShaderSourceItems, kFragmentShaderSourceAi};
 
-const vector<string> kNames = {"walls", "win_tile", "player", "items", "ai"};
+const vector<const char*> kFragmentSources = {kFragmentShaderSourceWalls, kFragmentShaderSourceTarget, kFragmentShaderSourcePlayer, kFragmentShaderSourceItems, kFragmentShaderSourceAi, kFragmentShaderSourceTimer};
 
-const map<string, unsigned int> kIndexMap = {{"walls", 0}, {"win_tile", 1}, {"player", 2} , {"items",3}, {"ai", 4}};
+const vector<string> kNames = {"walls", "win_tile", "player", "items", "ai", "timer"};
+
+const map<string, unsigned int> kIndexMap = {{"walls", 0}, {"win_tile", 1}, {"player", 2} , {"items",3}, {"ai", 4}, {"timer", 5}};
 
 bool game_over = false;
 bool level_over = false;
 
-constexpr unsigned int kNumObjects = 5;
+constexpr unsigned int kNumObjects = 6;
 
 unsigned int rectangle_ind[] = {
     0, 1, 3,
