@@ -60,9 +60,16 @@ void Game::InitializeWindow(){
 void Game::GenerateNextLevel(){
     level_over = false;
     if(cur_level_ >= levels_.size()){
-        auto timediff = chrono::duration_cast<chrono::seconds>(chrono::system_clock::now() - game_creation_time_).count();
-        cout << "Congratulations - You Win!" << "\nTime Taken: " << timediff << " seconds \nScore: " << 1000000.0f/timediff << endl;
-        exit(EXIT_SUCCESS);
+        if(!won){
+            auto timediff = chrono::duration_cast<chrono::seconds>(chrono::system_clock::now() - game_creation_time_).count();
+            cout << "Congratulations - You Win!" << "\nTime Taken: " << timediff << " seconds \nScore: " << 1000000.0f/timediff << endl;
+            cout << "Press Space to restart the game" << endl;
+            won = true;
+            game_over = true;
+            glClearColor(0.3F, 0.0F, 0.3F, 1.0f);
+            glClear(GL_COLOR_BUFFER_BIT);
+        }
+        return;
     }   
 
     Level next_level = levels_.at(cur_level_++);
@@ -209,9 +216,9 @@ void Game::ProcessInput(Level &level, Maze &maze){
     for(Ai* ai : ai_){
         ai_coords.push_back(ai->GetCorners());
     }
-    if(!invincible && !teleport_colors && CollideAi(player_current_coords, ai_coords, 0, 0)){
+    if(!won && !invincible && !teleport_colors && CollideAi(player_current_coords, ai_coords, 0, 0)){
         if(!game_over)
-            std::cout << "Game Over - You Lose.\nPress Enter to retry level.\nPress Space to restart game." << std::endl;
+            std::cout << "Game Over - You Lose.\nPress Enter to retry level.\nPress Space to replay the game." << std::endl;
         game_over = true;
         glClearColor(0.3F, 0.0F, 0.0F, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
@@ -242,12 +249,13 @@ void Game::ProcessInput(Level &level, Maze &maze){
     if (game_over && glfwGetKey(game_window_, GLFW_KEY_SPACE) == GLFW_PRESS){
         cur_level_ = 0;
         game_over = false;
+        won = false;
         glClearColor(0.0F, 0.0F, 0.0F, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
         GenerateNextLevel();
     }
 
-    if (game_over && glfwGetKey(game_window_, GLFW_KEY_ENTER) == GLFW_PRESS){
+    if (game_over && !won && glfwGetKey(game_window_, GLFW_KEY_ENTER) == GLFW_PRESS){
         cur_level_--;
         game_over = false;
         glClearColor(0.0F, 0.0F, 0.0F, 1.0f);
