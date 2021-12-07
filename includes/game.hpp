@@ -43,6 +43,7 @@ class Game { //Game class
         chrono::system_clock::time_point start_time_;
         chrono::system_clock::time_point game_creation_time_;
         map<string, unsigned int> programs_;
+        float timerhitbox[12];
 
         void InitializeWindow();
         void ProcessInput(Level &level, Maze &maze);
