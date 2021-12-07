@@ -24,7 +24,11 @@ int main()
     Level level5{0.001F, 25, ai_loc_5, 0.0005F, 25, 25, {0, 0}, {24, 24}, 4.0F, 40};
     Level level6{0.001F, 1, {{29, 29}}, 0.001F, 30, 30, {0, 0}, {29, 29}, 1.0F, 500};
     Level level7{0.001F, 1, {{29, 29}}, 0.002F, 30, 30, {0, 0}, {29, 29}, 0.5F, 1};
+    Level level8{0.0015F, 8, {{0,0},{31,31},{0,15},{15,0},{0,31},{31,0},{31,15},{15,31}}, 0.00035F, 32, 32, {15, 15}, {31, 31}, 3.0F, 64};
+    Level level9{0.0015F, 4, {{0,0},{49,49},{0,49},{49,0}}, 0.00075F, 50, 50, {25, 25}, {47, 16}, 7.0F, 50};
     Game game;
+    game.AddLevel(level7);
+    game.AddLevel(level8);
     game.AddLevel(level0);
     game.AddLevel(level1);
     game.AddLevel(level2);

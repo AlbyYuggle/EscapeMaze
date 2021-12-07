@@ -474,8 +474,10 @@ void Game::ProcessInputAndRegenerate(Level &level, Maze &maze){    // render
     BindElement("timer");
 
     ProcessInput(level, maze);
-    for(Ai* ai : ai_){
-        ai->Seek(player_->GetCenter(), level.maze_height_, maze);
+    if(!game_over){
+        for(Ai* ai : ai_){
+            ai->Seek(player_->GetCenter(), level.maze_height_, maze);
+        }
     }
     glfwSwapBuffers(game_window_);
     glfwPollEvents();
