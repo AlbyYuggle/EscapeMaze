@@ -66,7 +66,7 @@ void Game::GenerateNextLevel(){
             cout << "Press Space to restart the game" << endl;
             won = true;
             game_over = true;
-            glClearColor(0.3F, 0.0F, 0.3F, 1.0f);
+            glClearColor(0.6235F, 0.4588F, 1.0F, 1.0f);
             glClear(GL_COLOR_BUFFER_BIT);
         }
         return;
